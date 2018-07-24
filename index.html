@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Mental disorders | a review</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A review on mental disorders">
+    <meta name="keywords" content="Mental, Disorders, Schizoprenia">
+    <meta name="author" content="Yan Holtz et al.">
+
+    <!-- Control appearance when share by social media -->
+    <meta property="og:title" content="Mental disorders | a review" />
+    <meta property="og:image" content="img/TODO" />
+    <meta property="og:description" content="Mental disorders | a review" />
+    <meta property='og:url' content="TODO.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/agency.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =======================  LANDING SECTION ======================= -->
+<header class="masthead">
+ <div style="background-color: #DE4938">
+   <div class="container">
+      <div class="intro-text">
+        <br><br><br><br>
+        <p style="font-size: 38px">A dive in Mental disorders</p>
+        <p style="font-size: 24px">What, How, Why, Which and other answers</p>
+        <center><img src="img/landing.png" width="70%"></img></center>
+        <p>A visual essay by Yan <u>Holtz</u>, John <u>McGrath</u> and others</p>
+      </div>
+    </div>
+  </div>
+  <div class="arrowlanding">
+    <a class="js-scroll-trigger" href="#intro"><p style="font-size: 40px; color: black">&#xfe40;</p></a>
+  </div>
+</header>
+
+
+
+
+
+
+
+
+
+
+
+<!-- =======================  PART 1: GENERAL INTRO ======================= -->
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+<section id="intro" class="bg-light" style="padding-bottom: 3%">
+  <div class="container" >
+
+    <div class="row">
+      <div class="col-lg-12" style="text-align: center">
+        <p>Mental disorder are a massive issue in our world. X% of the population is concerned. But what is a mental disorder, how are they organized? Here is an exploration</p>
+
+<style>
+
+.node circle {
+  fill: #999;
+}
+
+.node text {
+  font: 10px sans-serif;
+}
+
+.node--internal circle {
+  fill: #555;
+}
+
+.node--internal text {
+  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+}
+
+.link {
+  fill: none;
+  stroke: #555;
+  stroke-opacity: 0.4;
+  stroke-width: 1.5px;
+}
+
+</style>
+
+<svg width="960" height="950" style="background-color: green"></svg>
+<script>
+
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height"),
+    g = svg.append("g").attr("transform", "translate(" + (width / 2 - 15) + "," + (height / 2 + 25) + ")");
+
+var stratify = d3.stratify()
+    .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
+
+var tree = d3.cluster()
+    .size([360, 390])
+    .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+
+d3.csv("DATA/flare.csv", function(error, data) {
+  if (error) throw error;
+
+  var root = tree(stratify(data)
+      .sort(function(a, b) { return (a.height - b.height) || a.id.localeCompare(b.id); }));
+
+  var link = g.selectAll(".link")
+    .data(root.descendants().slice(1))
+    .enter().append("path")
+      .attr("class", "link")
+      .attr("d", function(d) {
+        return "M" + project(d.x, d.y)
+            + "C" + project(d.x, (d.y + d.parent.y) / 2)
+            + " " + project(d.parent.x, (d.y + d.parent.y) / 2)
+            + " " + project(d.parent.x, d.parent.y);
+      });
+
+  var node = g.selectAll(".node")
+    .data(root.descendants())
+    .enter().append("g")
+      .attr("class", function(d) { return "node" + (d.children ? " node--internal" : " node--leaf"); })
+      .attr("transform", function(d) { return "translate(" + project(d.x, d.y) + ")"; });
+
+  node.append("circle")
+      .attr("r", 2.5);
+
+  node.append("text")
+      .attr("dy", ".31em")
+      .attr("x", function(d) { return d.x < 180 === !d.children ? 6 : -6; })
+      .style("text-anchor", function(d) { return d.x < 180 === !d.children ? "start" : "end"; })
+      .attr("transform", function(d) { return "rotate(" + (d.x < 180 ? d.x - 90 : d.x + 90) + ")"; })
+      .text(function(d) { return d.id.substring(d.id.lastIndexOf(".") + 1); });
+});
+
+function project(x, y) {
+  var angle = (x - 90) / 180 * Math.PI, radius = y;
+  return [radius * Math.cos(angle), radius * Math.sin(angle)];
+}
+
+</script>
+
+
+
+
+
+
+
+      </div>
+    </div>  
+  </div>
+</section>
+
+
+<!-- ======================================================================= -->
+
+
+
+
+
+
+
+<!-- =======================  PART 2: CIRCULAR BARPLOT ======================= -->
+
+
+
+<!-- ======================================================================= -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ======================= FOOTER SECTION ================================ -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; The Como project 2018</span>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="https://twitter.com/R_Graph_Gallery">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/holtzy">
+                  <i class="fa fa-github"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://www.linkedin.com/in/yan-holtz-2477534a/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+<!-- ======================================================================= -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =================== MODAL SECTION ===================================== -->
+
+    <!-- Poster FULL -->
+    <div class="portfolio-modal modal fade" id="greentech" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog h-100" style="max-width: 100vw;">
+        <div class="modal-content"> 
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                   <p style="display:inline; font-size: 35px; margin-top: 60px">The GreenTech Challenge</p>
+                      <hr style="width: 100px; height: 1px; border:none;color:#333;background-color:#333;">
+                      <br>
+                      <ul class="list-inline social-buttons">
+                        <li class="list-inline-item">
+                          <a href="https://twitter.com/R_Graph_Gallery">
+                            <i class="fa fa-twitter"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item social-buttons">
+                          <a href="https://github.com/holtzy">
+                            <i class="fa fa-github" style="color: white"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item social-buttons">
+                          <a href="https://www.linkedin.com/in/yan-holtz-2477534a/">
+                            <i class="fa fa-linkedin"></i>
+                          </a>
+                        </li>
+                      </ul>
+                      <br><br>
+                      <p>Yan Holtz's <u>blog</u> on statistics, R and Dataviz. More or less linked with our world, always related to data.</p>  
+                      <h1>Something</h1>
+                      <hr>
+                      <p>blaaaaa</p>                
+
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- Violin -->
+    <div class="portfolio-modal modal fade" id="violin" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-10 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <a href="graph/violin.html"><img class="img-fluid d-block mx-auto" src="img/section/Violin150.png" alt=""></a>
+
+                  <a href="graph/violin.html"><h2 class="text-uppercase">Violin</h2></a>
+                  <p class="item-intro text-muted">An alternative to boxplot to compare the distribution of several groups.</p>
+                  <div class="cardtitle">About</div>
+                  <hr>
+                  <p style="text-align: justify">Violinplots allow to visualize the distribution of a numeric variable for one or several groups. It is really close from a <a href="caveat/boxplot.html">boxplot</a>, but allows a deeper understanding of the distribution. <br><br>Violins are particularly adapted when the amount of data is huge and showing individual observations gets impossible.</p>
+
+                  <div class="cardtitle">Common Mistakes</div>
+                  <hr>
+                  <div style="text-align: left !important;"><ul><li>If you have just a few groups, you are probably interested by <a href="graph/ridgeline.html">ridgeline charts</a>.</li><li>If you compare groups with very different sample size, <a href="caveat/boxplot.html">show it</a>.</li><li><a href="caveat/order_data.html">Ordering groups</a> by median value makes the chart more insightful.</li></ul><br></div>
+
+                  <div class="cardtitle">Code</div>
+                  <hr>
+                  <p>
+                  <a href="https://www.r-graph-gallery.com/violin-plot/" class="btn btn-primary">R graph gallery</a>
+                  <a href="https://python-graph-gallery.com/violin-plot/" class="btn btn-primary">Python gallery</a>
+                  </p>
+
+                  <div class="cardtitle">Read More</div>
+                  <hr>
+                  <p style="text-align: justify">See the <a href="graph/violin.html">dedicated page</a>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- ======================================================================= -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- ======================== JAVASCRIPT SECTION =========================== -->
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/agency.min.js"></script>
+    <script src="js/portfolio.js"></script>
+    <script src="js/tree.js"></script>
+
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+
+
+
+
+
+
+
+
+<!-- ======================================================================= -->
+  </body>
+
+</html>
