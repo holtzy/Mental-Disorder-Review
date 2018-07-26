@@ -31,6 +31,9 @@
     <!-- Custom styles for this template -->
     <link href="css/agency.css" rel="stylesheet">
 
+    <!-- D3.JS -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -77,8 +80,186 @@
 
 
 
+
+<!-- =======================  SYMMETRIC BARPLOT ======================= -->
+
+<section id="intro" style="padding-bottom: 3%">
+
+<div id="myBtnContainer" class="text-center">
+  <button class="btn btn-secondary active" onclick="show1('Exposed to Schizophrenia and related')">Schizophrenia</button>
+  <button class="btn btn-secondary" onclick="show1('Exposed to Organic disorders')">Organic disorder</button>
+  <button class="btn btn-secondary" onclick="show1('Exposed to Substance use')">Substance Use</button>
+  <button class="btn btn-secondary" onclick="show1('Exposed to Eating disorders')">Eating disorder</button>
+</div>
+<svg width="1100" height="600" style="display: block; margin: auto"></svg>
+
+<script>
+
+// the svg area
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height"),
+    margin = {top: 20, right: 50, bottom: 50, left: 50};
+
+// Set range and domain for both X axis
+var x1 = d3.scaleLinear()
+    .domain([400, 0])
+    .range([50, 400]);
+var x2 = d3.scaleLinear()
+    .domain([0, 400])
+    .range([600, 950]);
+
+// Set range and domain for Y axis
+var y = d3.scaleLinear()
+    .domain([0, 10])
+    .range([height - margin.bottom, margin.top]);
+
+// Add the 2 X axis, with their label
+svg.append("g")
+    .attr("transform", "translate(0," + (height - margin.bottom) + ")")
+    .call(d3.axisBottom(x1))
+  .append("text")
+    .attr("x", 50)
+    .attr("y", 40)
+    .attr("fill", "#000")
+    .attr("text-anchor", "start")
+    .attr("font-weight", "bold")
+    .text("Hazard ratio");
+
+svg.append("g")
+    .attr("transform", "translate(0," + (height - margin.bottom) + ")")
+    .call(d3.axisBottom(x2))
+  .append("text")
+    .attr("x", 950)
+    .attr("y", 40)
+    .attr("fill", "#000")
+    .attr("text-anchor", "end")
+    .attr("font-weight", "bold")
+    .text("Hazard ratio");
+
+
+
+
+// Initialize the barplot with bars of length 0
+d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/HR.csv", convertNumbers, function(d) {
+
+    d.forEach(function(d) {
+        d.outcome = d.outcome2,
+        d.exposure = d.exposure2,
+        d.hr = +d.HR
+    });
+
+  
+  // Add bars graph 1
+  svg.selectAll(".bar1")
+    .data(d.filter(function(d){return d.exposure2 == "Exposed to Organic disorders";}))
+    .enter()
+    .append("rect")
+      .attr("class", "bar1")
+      .attr("x", function(d) { return x1(0) } )
+      .attr("y", function(d, i) { return y(i+1); })
+      .attr("width", function(d) { return  400 - x1(0) })
+      .attr("height",30)
+
+  // Add bars graph 2
+  svg.selectAll(".bar2")
+    .data(d.filter(function(d){return d.outcome2 == "Organic disorders";}))
+    .enter()
+    .append("rect")
+      .attr("class", "bar2")
+      .attr("x", 600)
+      .attr("y", function(d, i) { return y(i+1); })
+      .attr("width", function(d) { return x2(0)-600; })
+      .attr("height",30)
+
+  // Add text in the middle
+  svg.selectAll(".textMiddle")
+    .data(d.filter(function(d){return d.exposure2 == "Exposed to Organic disorders";}))
+    .enter()
+    .append("text")
+      .attr("x", 500)
+      .attr("y", function(d, i) { return y(i+1)+15; })
+      .text(function(d){ return d.outcome2 })
+      .attr("text-anchor", "middle")
+      .style("font-size", "12px")
+})
+
+
+
+
+// A function to show Schizo
+function show1(myDisease) {
+
+    d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/HR.csv", convertNumbers, function(d) {
+
+        d.forEach(function(d) {
+            d.outcome = d.outcome2,
+            d.exposure = d.exposure2,
+            d.hr = +d.HR
+        });
+    
+    svg.selectAll(".bar1")
+        .data(d.filter(function(d){return d.exposure2 == myDisease}))
+        .transition()
+        .duration(1000)
+        .attr("width", function(d) { return x2(d["HR"])-600; })
+        .attr("x", function(d) { return x1(d["HR"]) } )
+
+    svg.selectAll(".bar2")
+        .data(d.filter(function(d){return d.exposure2 == myDisease;}))
+        .transition()
+        .duration(1000)
+        .attr("width", function(d) { return x2(d["HR"])-600; })
+
+    })
+}
+
+
+
+
+
+// Run schizophrenia per default
+show1('Exposed to Schizophrenia and related')
+
+
+
+
+// convert strings to numbers in CSV
+function convertNumbers(row) {
+  var r = {};
+  for (var k in row) {
+    r[k] = +row[k];
+    if (isNaN(r[k])) {
+      r[k] = row[k];
+    }
+  }
+  return r;
+}
+
+</script>
+
+
+</section>
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- =======================  PART 1: GENERAL INTRO ======================= -->
-<script src="https://d3js.org/d3.v4.min.js"></script>
 
 <section id="intro" class="bg-light" style="padding-bottom: 3%">
   <div class="container" >
@@ -120,64 +301,7 @@
         </style>
 
         <svg width="960" height="950"></svg>
-        <script>
 
-        var svg = d3.select("svg"),
-            width = +svg.attr("width"),
-            height = +svg.attr("height"),
-            g = svg.append("g").attr("transform", "translate(" + (width / 2 - 15) + "," + (height / 2 + 25) + ")");
-
-        var stratify = d3.stratify()
-            .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
-
-        var tree = d3.cluster()
-            .size([360, 390])
-            .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
-
-        d3.csv("https://raw.githubusercontent.com/holtzy/Mental-Disorder-Review/master/DATA/flare.csv", function(error, data) {
-          if (error) throw error;
-
-          var root = tree(stratify(data)
-              .sort(function(a, b) { return (a.height - b.height) || a.id.localeCompare(b.id); }));
-
-          var link = g.selectAll(".link")
-            .data(root.descendants().slice(1))
-            .enter()
-            .append("path")
-              .attr("class", "link")
-              .attr("d", function(d) {
-                return "M" + project(d.x, d.y)
-                    + "C" + project(d.x, (d.y + d.parent.y) / 2)
-                    + " " + project(d.parent.x, (d.y + d.parent.y) / 2)
-                    + " " + project(d.parent.x, d.parent.y);
-              });
-
-          var node = g.selectAll(".node")
-            .data(root.descendants())
-            .enter().append("g")
-              .attr("class", function(d) { return "node" + (d.children ? " node--internal" : " node--leaf"); })
-              .attr("transform", function(d) { return "translate(" + project(d.x, d.y) + ")"; });
-
-          node.append("circle")
-              .transition(200)
-              .attr("r", 2.5)
-              .style("fill", "red")
-
-          node.append("text")
-              .transition(2)
-              .attr("dy", ".31em")
-              .attr("x", function(d) { return d.x < 180 === !d.children ? 6 : -6; })
-              .style("text-anchor", function(d) { return d.x < 180 === !d.children ? "start" : "end"; })
-              .attr("transform", function(d) { return "rotate(" + (d.x < 180 ? d.x - 90 : d.x + 90) + ")"; })
-              .text(function(d) { return d.id.substring(d.id.lastIndexOf(".") + 1); });
-        });
-
-        function project(x, y) {
-          var angle = (x - 90) / 180 * Math.PI, radius = y;
-          return [radius * Math.cos(angle), radius * Math.sin(angle)];
-        }
-
-        </script>
 
 
 
@@ -192,6 +316,17 @@
 
 
 <!-- ======================================================================= -->
+
+
+
+
+
+
+
+
+
+
+
 
 
 
