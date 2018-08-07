@@ -76,3 +76,13 @@ F90-F98,Behavioural and emotional disorders with onset usually occurring in chil
 F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F94,Disorders of social functioning with onset specific to childhood and adolescence,Social functioning,o.Emotional.Social functioning
 F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F95,Tic disorders,Tic disorders,o.Emotional.Tic disorders
 F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F98,Other behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Other,o.Emotional.Other
+-,-,-,-,-,-,o..Behavioural and emotional disorders with onset usually occurring in childhood and adolescence
+-,-,-,-,-,-,o..Behavioural syndromes associated with physiological disturbances and physical factors
+-,-,-,-,-,-,o..Disorders of adult personality and behaviour
+-,-,-,-,-,-,o..Disorders of psychological development
+-,-,-,-,-,-,o..Mental and behavioural disorders due to psychoactive substance use
+-,-,-,-,-,-,o..Mental retardation
+-,-,-,-,-,-,o..Mood [affective] disorders
+-,-,-,-,-,-,"o..Neurotic, stress-related and somatoform disorders"
+-,-,-,-,-,-,"o..Organic, including symptomatic, mental disorders"
+-,-,-,-,-,-,"o..Schizophrenia, schizotypal and delusional disorders"

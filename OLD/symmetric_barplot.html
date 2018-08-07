@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
 
 
 <head>
@@ -80,88 +81,264 @@
 
 
 
-<!-- =======================  PART 1 ======================= -->
+<!-- =======================  SYMMETRIC BARPLOT ======================= -->
 
-<section id="part1">
-  <div class="container">
+<section id="intro" style="padding-bottom: 3%">
 
-    <div class="row">
-      <div class="col-md-7" id="dataviz1"> yo</div>
-      <div class="col-md-5">
-        <h3 style="line-height: 50px"><u>Part 1</u>:<br>How mental disorders are organized.</h3>
-        <hr>
-        <p>What is the ICD classification? How many groups? How many different disorders? How are they defined?</p>
-        <hr>
-        <p>Radial dendrogram that shows the classification. First step with just the 10 groups. Second with all diseases. Tooltip on each disorder with a definition.</p>
-        <hr>
-        <p><u>Data</u>: Already available and cleaned throught the WHO website.</p>
-      </div>
-    </p>
-  </div>
-</section>
+<div id="myBtnContainer" class="text-center">
+  <button class="btn btn-secondary active" onclick="show1('Exposed to Schizophrenia and related')">Schizophrenia</button>
+  <button class="btn btn-secondary" onclick="show1('Exposed to Organic disorders')">Organic disorder</button>
+  <button class="btn btn-secondary" onclick="show1('Exposed to Substance use')">Substance Use</button>
+  <button class="btn btn-secondary" onclick="show1('Exposed to Eating disorders')">Eating disorder</button>
+</div>
+<svg width="1100" height="600" style="display: block; margin: auto"></svg>
 
 <script>
-var svg = d3.select("#dataviz1"),
-    width = 600,
-    height = 600,
-    g = svg.append("g").attr("transform", "translate(" + (width / 2 - 15) + "," + (height / 2 + 25) + ")");
 
-var stratify = d3.stratify()
-    .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
+// the svg area
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height"),
+    margin = {top: 20, right: 50, bottom: 50, left: 50};
 
-var tree = d3.cluster()
-    .size([360, 390])
-    .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+// Set range and domain for both X axis
+var x1 = d3.scaleLinear()
+    .domain([400, 0])
+    .range([50, 400]);
+var x2 = d3.scaleLinear()
+    .domain([0, 400])
+    .range([600, 950]);
 
-d3.select("#dataviz1")
-  .append("svg")
-  .append("circle")
-  .attr("cx","10")
-  .attr("cy","10")
-  .attr("r", "50")
+// Set range and domain for Y axis
+var y = d3.scaleLinear()
+    .domain([0, 10])
+    .range([height - margin.bottom, margin.top]);
 
-d3.csv("https://raw.githubusercontent.com/holtzy/Mental-Disorder-Review/master/DATA/ICD.csv", function(data) {
+// Add the 2 X axis, with their label
+svg.append("g")
+    .attr("transform", "translate(0," + (height - margin.bottom) + ")")
+    .call(d3.axisBottom(x1))
+  .append("text")
+    .attr("x", 50)
+    .attr("y", 40)
+    .attr("fill", "#000")
+    .attr("text-anchor", "start")
+    .attr("font-weight", "bold")
+    .text("Hazard ratio");
 
-  var root = tree(stratify(data)
-      .sort(function(a, b) { return (a.height - b.height) || a.id.localeCompare(b.id); }));
+svg.append("g")
+    .attr("transform", "translate(0," + (height - margin.bottom) + ")")
+    .call(d3.axisBottom(x2))
+  .append("text")
+    .attr("x", 950)
+    .attr("y", 40)
+    .attr("fill", "#000")
+    .attr("text-anchor", "end")
+    .attr("font-weight", "bold")
+    .text("Hazard ratio");
 
- console.log(root)
 
+
+
+// Initialize the barplot with bars of length 0
+d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/HR.csv", convertNumbers, function(d) {
+
+    d.forEach(function(d) {
+        d.outcome = d.outcome2,
+        d.exposure = d.exposure2,
+        d.hr = +d.HR
+    });
+
+  
+  // Add bars graph 1
+  svg.selectAll(".bar1")
+    .data(d.filter(function(d){return d.exposure2 == "Exposed to Organic disorders";}))
+    .enter()
+    .append("rect")
+      .attr("class", "bar1")
+      .attr("x", function(d) { return x1(0) } )
+      .attr("y", function(d, i) { return y(i+1); })
+      .attr("width", function(d) { return  400 - x1(0) })
+      .attr("height",30)
+
+  // Add bars graph 2
+  svg.selectAll(".bar2")
+    .data(d.filter(function(d){return d.outcome2 == "Organic disorders";}))
+    .enter()
+    .append("rect")
+      .attr("class", "bar2")
+      .attr("x", 600)
+      .attr("y", function(d, i) { return y(i+1); })
+      .attr("width", function(d) { return x2(0)-600; })
+      .attr("height",30)
+
+  // Add text in the middle
+  svg.selectAll(".textMiddle")
+    .data(d.filter(function(d){return d.exposure2 == "Exposed to Organic disorders";}))
+    .enter()
+    .append("text")
+      .attr("x", 500)
+      .attr("y", function(d, i) { return y(i+1)+15; })
+      .text(function(d){ return d.outcome2 })
+      .attr("text-anchor", "middle")
+      .style("font-size", "12px")
 })
+
+
+
+
+// A function to show Schizo
+function show1(myDisease) {
+
+    d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/HR.csv", convertNumbers, function(d) {
+
+        d.forEach(function(d) {
+            d.outcome = d.outcome2,
+            d.exposure = d.exposure2,
+            d.hr = +d.HR
+        });
+    
+    svg.selectAll(".bar1")
+        .data(d.filter(function(d){return d.exposure2 == myDisease}))
+        .transition()
+        .duration(1000)
+        .attr("width", function(d) { return x2(d["HR"])-600; })
+        .attr("x", function(d) { return x1(d["HR"]) } )
+
+    svg.selectAll(".bar2")
+        .data(d.filter(function(d){return d.exposure2 == myDisease;}))
+        .transition()
+        .duration(1000)
+        .attr("width", function(d) { return x2(d["HR"])-600; })
+
+    })
+}
+
+
+
+
+
+// Run schizophrenia per default
+show1('Exposed to Schizophrenia and related')
+
+
+
+
+// convert strings to numbers in CSV
+function convertNumbers(row) {
+  var r = {};
+  for (var k in row) {
+    r[k] = +row[k];
+    if (isNaN(r[k])) {
+      r[k] = row[k];
+    }
+  }
+  return r;
+}
 
 </script>
 
 
-
-
-
-
-
-
-
-
-
-<!-- =======================  PART 2 ======================= -->
-
-<section id="part2" class="bg-light">
-  <div class="container">
-
-    <div class="row">
-      <div class="col-md-5">
-        <h3 style="line-height: 50px"><u>Part 2</u>:<br>Occurence and impact.</h3>
-        <hr>
-        <p>What are the most common mental disorders? What is the occurence of each? What is their impact?</p>
-        <hr>
-        <p>Radial dendrogram becomes a circular barplot with 2 layers; occurence and impact.</p>
-        <hr>
-        <p><u>Data</u>: data from the <a href="http://www.healthdata.org/gbd">Global Burden of Disease</a></p>
-      </div>
-      <div class="col-md-7" id="dataviz1"> yo</div>
-  </div>
 </section>
+
 
 <br>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =======================  PART 1: GENERAL INTRO ======================= -->
+
+<section id="intro" class="bg-light" style="padding-bottom: 3%">
+  <div class="container" >
+
+    <div class="row">
+      <div class="col-lg-12" style="text-align: center">
+        <p>Mental disorder are a massive issue in our world. X% of the population is concerned. But what is a mental disorder, how are they organized? Here is an exploration</p>
+      </div>
+
+
+      <div class="col-lg-12 col-md-8" style="text-align: center" >
+
+
+        <style>
+
+        .node circle {
+          fill: #999;
+        }
+
+        .node text {
+          font: 10px sans-serif;
+        }
+
+        .node--internal circle {
+          fill: #555;
+        }
+
+        .node--internal text {
+          text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+        }
+
+        .link {
+          fill: none;
+          stroke: #555;
+          stroke-opacity: 0.4;
+          stroke-width: 1.5px;
+        }
+
+        </style>
+
+        <svg width="960" height="950"></svg>
+
+
+
+
+
+
+
+
+      </div>
+    </div>  
+  </div>
+</section>
+
+
+<!-- ======================================================================= -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =======================  PART 2: CIRCULAR BARPLOT ======================= -->
+
+
+
+<!-- ======================================================================= -->
 
 
 
