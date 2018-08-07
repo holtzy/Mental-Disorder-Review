@@ -1,107 +1,107 @@
-L2_code,L2_meaning,L2_short,L3_code,L3_meaning,L3_short,id
-F,-,-,-,-,-,o
-F00-F09,-,-,-,-,-,o.Organic
-F00-F09,"Organic, including symptomatic, mental disorders",Organic,F06,Other mental disorders due to brain damage and dysfunction and to physical disease,Brain damage,o.Organic.Brain_damage
-F00-F09,"Organic, including symptomatic, mental disorders",Organic,F07,"Personality and behavioural disorders due to brain disease, damage and dysfunction",Brain disease and damage,o.Organic.Brain_disease_and_damage
-F00-F09,"Organic, including symptomatic, mental disorders",Organic,F05,"Delirium, not induced by alcohol and other psychoactive substances",Delirium,o.Organic.Delirium
-F00-F09,"Organic, including symptomatic, mental disorders",Organic,F00,Dementia in Alzheimer's disease,Dementia in Alzheimer's disease,o.Organic.Dementia_in_Alzheimer's_disease
-F00-F09,"Organic, including symptomatic, mental disorders",Organic,F04,"Organic amnesic syndrome, not induced by alcohol and other psychoactive substances",Organic amnesic syndrome,o.Organic.Organic_amnesic_syndrome
-F00-F09,"Organic, including symptomatic, mental disorders",Organic,F02,Dementia in other diseases classified elsewhere,Other dementia,o.Organic.Other_dementia
-F00-F09,"Organic, including symptomatic, mental disorders",Organic,F03,Unspecified dementia,Unspecified dementia,o.Organic.Unspecified_dementia
-F00-F09,"Organic, including symptomatic, mental disorders",Organic,F09,Unspecified organic or symptomatic mental disorder,Unspecified organic,o.Organic.Unspecified_organic
-F00-F09,"Organic, including symptomatic, mental disorders",Organic,F01,Vascular dementia,Vascular dementia,o.Organic.Vascular_dementia
-F10-F19,-,-,-,-,-,o.Substance_use
-F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F10,Mental and behavioural disorders due to use of alcohol,Alcohol,o.Substance_use.Alcohol
-F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F12,Mental and behavioural disorders due to use of cannabinoids,Cannabinoids,o.Substance_use.Cannabinoids
-F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F14,Mental and behavioural disorders due to use of cocaine,Cocaine,o.Substance_use.Cocaine
-F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F16,Mental and behavioural disorders due to use of hallucinogens,Hallucinogens,o.Substance_use.Hallucinogens
-F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F19,Mental and behavioural disorders due to multiple drug use and use of other psychoactive substances,Multiple drug use,o.Substance_use.Multiple_drug_use
-F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F11,Mental and behavioural disorders due to use of opioids,Opioids,o.Substance_use.Opioids
-F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F13,Mental and behavioural disorders due to use of sedatives or hypnotics,Sedative or hypnotics,o.Substance_use.Sedative_or_hypnotics
-F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F15,"Mental and behavioural disorders due to use of other stimulants, including caffeine",Stimulants and caffeine,o.Substance_use.Stimulants_and_caffeine
-F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F17,Mental and behavioural disorders due to use of tobacco,Tobacco,o.Substance_use.Tobacco
-F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F18,Mental and behavioural disorders due to use of volatile solvents,Volatile solvents,o.Substance_use.Volatile_solvents
-F20-F29,-,-,-,-,-,o.Schizophrenia
-F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F23,Acute and transient psychotic disorders,Acute and transient psychotic disorders,o.Schizophrenia.Acute_and_transient_psychotic_disorders
-F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F24,Induced delusional disorder,Induced delusional disorder,o.Schizophrenia.Induced_delusional_disorder
-F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F28,Other nonorganic psychotic disorders,Other nonorganic psychotic disorders,o.Schizophrenia.Other_nonorganic_psychotic_disorders
-F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F22,Persistent delusional disorders,Persistent delusional disorders,o.Schizophrenia.Persistent_delusional_disorders
-F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F25,Schizoaffective disorders,Schizoaffective disorders,o.Schizophrenia.Schizoaffective_disorders
-F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F20,Schizophrenia,Schizophrenia,o.Schizophrenia.Schizophrenia
-F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F21,Schizotypal disorder,Schizotypal disorder,o.Schizophrenia.Schizotypal_disorder
-F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F29,Unspecified nonorganic psychosis,Unspecified nonorganic psychosis,o.Schizophrenia.Unspecified_nonorganic_psychosis
-F30-F39,-,-,-,-,-,o.Mood
-F30-F39,Mood [affective] disorders,Mood,F31,Bipolar affective disorder,Bipolar affective disorder,o.Mood.Bipolar_affective_disorder
-F30-F39,Mood [affective] disorders,Mood,F32,Depressive episode,Depressive episode,o.Mood.Depressive_episode
-F30-F39,Mood [affective] disorders,Mood,F30,Manic episode,Manic episode,o.Mood.Manic_episode
-F30-F39,Mood [affective] disorders,Mood,F38,Other mood [affective] disorders,Other mood [affective] disorders,o.Mood.Other_mood_[affective]_disorders
-F30-F39,Mood [affective] disorders,Mood,F34,Persistent mood [affective] disorders,Persistent mood [affective] disorders,o.Mood.Persistent_mood_[affective]_disorders
-F30-F39,Mood [affective] disorders,Mood,F33,Recurrent depressive disorder,Recurrent depressive disorder,o.Mood.Recurrent_depressive_disorder
-F30-F39,Mood [affective] disorders,Mood,F39,Unspecified mood [affective] disorder,Unspecified mood [affective] disorder,o.Mood.Unspecified_mood_[affective]_disorder
-F40-F48,-,-,-,-,-,o.Neurotic
-F40-F48,"Neurotic, stress-related and somatoform disorders",Neurotic,F44,Dissociative [conversion] disorders,Dissociative [conversion] disorders,o.Neurotic.Dissociative_[conversion]_disorders
-F40-F48,"Neurotic, stress-related and somatoform disorders",Neurotic,F42,Obsessive-compulsive disorder,Obsessive-compulsive disorder,o.Neurotic.Obsessive-compulsive_disorder
-F40-F48,"Neurotic, stress-related and somatoform disorders",Neurotic,F41,Other anxiety disorders,Other anxiety disorders,o.Neurotic.Other_anxiety_disorders
-F40-F48,"Neurotic, stress-related and somatoform disorders",Neurotic,F48,Other neurotic disorders,Other neurotic disorders,o.Neurotic.Other_neurotic_disorders
-F40-F48,"Neurotic, stress-related and somatoform disorders",Neurotic,F40,Phobic anxiety disorders,Phobic anxiety disorders,o.Neurotic.Phobic_anxiety_disorders
-F40-F48,"Neurotic, stress-related and somatoform disorders",Neurotic,F43,"Reaction to severe stress, and adjustment disorders",Reaction to severe stress,o.Neurotic.Reaction_to_severe_stress
-F40-F48,"Neurotic, stress-related and somatoform disorders",Neurotic,F45,Somatoform disorders,Somatoform disorders,o.Neurotic.Somatoform_disorders
-F50-F59,-,-,-,-,-,o.Behavioural
-F50-F59,Behavioural syndromes associated with physiological disturbances and physical factors,Behavioural,F50,Eating disorders,Eating disorders,o.Behavioural.Eating_disorders
-F50-F59,Behavioural syndromes associated with physiological disturbances and physical factors,Behavioural,F55,Abuse of non-dependence-producing substances,Non-dependence-producing substances,o.Behavioural.Non-dependence-producing_substances
-F50-F59,Behavioural syndromes associated with physiological disturbances and physical factors,Behavioural,F51,Nonorganic sleep disorders,Nonorganic sleep disorders,o.Behavioural.Nonorganic_sleep_disorders
-F50-F59,Behavioural syndromes associated with physiological disturbances and physical factors,Behavioural,F54,Psychological and behavioural factors associated with disorders or diseases classified elsewhere,Other,o.Behavioural.Other
-F50-F59,Behavioural syndromes associated with physiological disturbances and physical factors,Behavioural,F53,"Mental and behavioural disorders associated with the puerperium, not elsewhere classified",Puerperium,o.Behavioural.Puerperium
-F50-F59,Behavioural syndromes associated with physiological disturbances and physical factors,Behavioural,F52,"Sexual dysfunction, not caused by organic disorder or disease",Sexual dysfunction,o.Behavioural.Sexual_dysfunction
-F50-F59,Behavioural syndromes associated with physiological disturbances and physical factors,Behavioural,F59,Unspecified behavioural syndromes associated with physiological disturbances and physical factors,Unspecified,o.Behavioural.Unspecified
-F60-F69,-,-,-,-,-,o.Personality
-F60-F69,Disorders of adult personality and behaviour,Personality,F65,Disorders of sexual preference,Disorders of sexual preference,o.Personality.Disorders_of_sexual_preference
-F60-F69,Disorders of adult personality and behaviour,Personality,F64,Gender identity disorders,Gender identity disorders,o.Personality.Gender_identity_disorders
-F60-F69,Disorders of adult personality and behaviour,Personality,F63,Habit and impulse disorders,Habit and impulse disorders,o.Personality.Habit_and_impulse_disorders
-F60-F69,Disorders of adult personality and behaviour,Personality,F61,Mixed and other personality disorders,Mixed and other personality disorders,o.Personality.Mixed_and_other_personality_disorders
-F60-F69,Disorders of adult personality and behaviour,Personality,F68,Other disorders of adult personality and behaviour,Other,o.Personality.Other
-F60-F69,Disorders of adult personality and behaviour,Personality,F62,"Enduring personality changes, not attributable to brain damage and disease",Personality changes,o.Personality.Personality_changes
-F60-F69,Disorders of adult personality and behaviour,Personality,F66,Psychological and behavioural disorders associated with sexual development and orientation,Sexual development and orientation,o.Personality.Sexual_development_and_orientation
-F60-F69,Disorders of adult personality and behaviour,Personality,F60,Specific personality disorders,Specific personality disorders,o.Personality.Specific_personality_disorders
-F60-F69,Disorders of adult personality and behaviour,Personality,F69,Unspecified disorder of adult personality and behaviour,Unspecified,o.Personality.Unspecified
-F70-F79,-,-,-,-,-,o.Retardation
-F70-F79,Mental retardation,Retardation,F70,Mild mental retardation,Mild mental retardation,o.Retardation.Mild_mental_retardation
-F70-F79,Mental retardation,Retardation,F71,Moderate mental retardation,Moderate mental retardation,o.Retardation.Moderate_mental_retardation
-F70-F79,Mental retardation,Retardation,F78,Other mental retardation,Other mental retardation,o.Retardation.Other_mental_retardation
-F70-F79,Mental retardation,Retardation,F73,Profound mental retardation,Profound mental retardation,o.Retardation.Profound_mental_retardation
-F70-F79,Mental retardation,Retardation,F72,Severe mental retardation,Severe mental retardation,o.Retardation.Severe_mental_retardation
-F70-F79,Mental retardation,Retardation,F79,Unspecified mental retardation,Unspecified mental retardation,o.Retardation.Unspecified_mental_retardation
-F80-F89,-,-,-,-,-,o.Psycho
-F80-F89,Disorders of psychological development,Psycho,F83,Mixed specific developmental disorders,Mixed specific developmental disorders,o.Psycho.Mixed_specific_developmental_disorders
-F80-F89,Disorders of psychological development,Psycho,F82,Specific developmental disorder of motor function,Motor function,o.Psycho.Motor_function
-F80-F89,Disorders of psychological development,Psycho,F88,Other disorders of psychological development,Other,o.Psycho.Other
-F80-F89,Disorders of psychological development,Psycho,F84,Pervasive developmental disorders,Pervasive developmental disorders,o.Psycho.Pervasive_developmental_disorders
-F80-F89,Disorders of psychological development,Psycho,F81,Specific developmental disorders of scholastic skills,Scholastic skills,o.Psycho.Scholastic_skills
-F80-F89,Disorders of psychological development,Psycho,F80,Specific developmental disorders of speech and language,Speech and language,o.Psycho.Speech_and_language
-F80-F89,Disorders of psychological development,Psycho,F89,Unspecified disorder of psychological development,Unspecified,o.Psycho.Unspecified
-F90-F98,-,-,-,-,-,o.Emotional
-F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F91,Conduct disorders,Conduct disorders,o.Emotional.Conduct_disorders
-F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F93,Emotional disorders with onset specific to childhood,Emotional disorders,o.Emotional.Emotional_disorders
-F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F90,Hyperkinetic disorders,Hyperkinetic disorders,o.Emotional.Hyperkinetic_disorders
-F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F92,Mixed disorders of conduct and emotions,Mixed disorders of conduct and emotions,o.Emotional.Mixed_disorders_of_conduct_and_emotions
-F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F98,Other behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Other,o.Emotional.Other
-F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F94,Disorders of social functioning with onset specific to childhood and adolescence,Social functioning,o.Emotional.Social_functioning
-F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F95,Tic disorders,Tic disorders,o.Emotional.Tic_disorders
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
+L2_code,L2_meaning,L2_short,L3_code,L3_meaning,L3_short,id,value
+F,-,-,-,-,-,o,12
+F00-F09,-,-,-,-,-,o.Organic,14
+F00-F09,"Organic, including symptomatic, mental disorders",Organic,F06,Other mental disorders due to brain damage and dysfunction and to physical disease,Brain damage,o.Organic.Brain_damage,16
+F00-F09,"Organic, including symptomatic, mental disorders",Organic,F07,"Personality and behavioural disorders due to brain disease, damage and dysfunction",Brain disease and damage,o.Organic.Brain_disease_and_damage,18
+F00-F09,"Organic, including symptomatic, mental disorders",Organic,F05,"Delirium, not induced by alcohol and other psychoactive substances",Delirium,o.Organic.Delirium,20
+F00-F09,"Organic, including symptomatic, mental disorders",Organic,F00,Dementia in Alzheimer's disease,Dementia in Alzheimer's disease,o.Organic.Dementia_in_Alzheimer's_disease,22
+F00-F09,"Organic, including symptomatic, mental disorders",Organic,F04,"Organic amnesic syndrome, not induced by alcohol and other psychoactive substances",Organic amnesic syndrome,o.Organic.Organic_amnesic_syndrome,24
+F00-F09,"Organic, including symptomatic, mental disorders",Organic,F02,Dementia in other diseases classified elsewhere,Other dementia,o.Organic.Other_dementia,26
+F00-F09,"Organic, including symptomatic, mental disorders",Organic,F03,Unspecified dementia,Unspecified dementia,o.Organic.Unspecified_dementia,28
+F00-F09,"Organic, including symptomatic, mental disorders",Organic,F09,Unspecified organic or symptomatic mental disorder,Unspecified organic,o.Organic.Unspecified_organic,30
+F00-F09,"Organic, including symptomatic, mental disorders",Organic,F01,Vascular dementia,Vascular dementia,o.Organic.Vascular_dementia,32
+F10-F19,-,-,-,-,-,o.Substance_use,34
+F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F10,Mental and behavioural disorders due to use of alcohol,Alcohol,o.Substance_use.Alcohol,36
+F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F12,Mental and behavioural disorders due to use of cannabinoids,Cannabinoids,o.Substance_use.Cannabinoids,38
+F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F14,Mental and behavioural disorders due to use of cocaine,Cocaine,o.Substance_use.Cocaine,40
+F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F16,Mental and behavioural disorders due to use of hallucinogens,Hallucinogens,o.Substance_use.Hallucinogens,42
+F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F19,Mental and behavioural disorders due to multiple drug use and use of other psychoactive substances,Multiple drug use,o.Substance_use.Multiple_drug_use,44
+F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F11,Mental and behavioural disorders due to use of opioids,Opioids,o.Substance_use.Opioids,46
+F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F13,Mental and behavioural disorders due to use of sedatives or hypnotics,Sedative or hypnotics,o.Substance_use.Sedative_or_hypnotics,48
+F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F15,"Mental and behavioural disorders due to use of other stimulants, including caffeine",Stimulants and caffeine,o.Substance_use.Stimulants_and_caffeine,50
+F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F17,Mental and behavioural disorders due to use of tobacco,Tobacco,o.Substance_use.Tobacco,52
+F10-F19,Mental and behavioural disorders due to psychoactive substance use,Substance use,F18,Mental and behavioural disorders due to use of volatile solvents,Volatile solvents,o.Substance_use.Volatile_solvents,54
+F20-F29,-,-,-,-,-,o.Schizophrenia,56
+F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F23,Acute and transient psychotic disorders,Acute and transient psychotic disorders,o.Schizophrenia.Acute_and_transient_psychotic_disorders,58
+F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F24,Induced delusional disorder,Induced delusional disorder,o.Schizophrenia.Induced_delusional_disorder,60
+F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F28,Other nonorganic psychotic disorders,Other nonorganic psychotic disorders,o.Schizophrenia.Other_nonorganic_psychotic_disorders,62
+F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F22,Persistent delusional disorders,Persistent delusional disorders,o.Schizophrenia.Persistent_delusional_disorders,64
+F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F25,Schizoaffective disorders,Schizoaffective disorders,o.Schizophrenia.Schizoaffective_disorders,66
+F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F20,Schizophrenia,Schizophrenia,o.Schizophrenia.Schizophrenia,68
+F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F21,Schizotypal disorder,Schizotypal disorder,o.Schizophrenia.Schizotypal_disorder,70
+F20-F29,"Schizophrenia, schizotypal and delusional disorders",Schizophrenia,F29,Unspecified nonorganic psychosis,Unspecified nonorganic psychosis,o.Schizophrenia.Unspecified_nonorganic_psychosis,72
+F30-F39,-,-,-,-,-,o.Mood,74
+F30-F39,Mood [affective] disorders,Mood,F31,Bipolar affective disorder,Bipolar affective disorder,o.Mood.Bipolar_affective_disorder,76
+F30-F39,Mood [affective] disorders,Mood,F32,Depressive episode,Depressive episode,o.Mood.Depressive_episode,78
+F30-F39,Mood [affective] disorders,Mood,F30,Manic episode,Manic episode,o.Mood.Manic_episode,80
+F30-F39,Mood [affective] disorders,Mood,F38,Other mood [affective] disorders,Other mood [affective] disorders,o.Mood.Other_mood_[affective]_disorders,82
+F30-F39,Mood [affective] disorders,Mood,F34,Persistent mood [affective] disorders,Persistent mood [affective] disorders,o.Mood.Persistent_mood_[affective]_disorders,84
+F30-F39,Mood [affective] disorders,Mood,F33,Recurrent depressive disorder,Recurrent depressive disorder,o.Mood.Recurrent_depressive_disorder,86
+F30-F39,Mood [affective] disorders,Mood,F39,Unspecified mood [affective] disorder,Unspecified mood [affective] disorder,o.Mood.Unspecified_mood_[affective]_disorder,88
+F40-F48,-,-,-,-,-,o.Neurotic,90
+F40-F48,"Neurotic, stress-related and somatoform disorders",Neurotic,F44,Dissociative [conversion] disorders,Dissociative [conversion] disorders,o.Neurotic.Dissociative_[conversion]_disorders,92
+F40-F48,"Neurotic, stress-related and somatoform disorders",Neurotic,F42,Obsessive-compulsive disorder,Obsessive-compulsive disorder,o.Neurotic.Obsessive-compulsive_disorder,94
+F40-F48,"Neurotic, stress-related and somatoform disorders",Neurotic,F41,Other anxiety disorders,Other anxiety disorders,o.Neurotic.Other_anxiety_disorders,96
+F40-F48,"Neurotic, stress-related and somatoform disorders",Neurotic,F48,Other neurotic disorders,Other neurotic disorders,o.Neurotic.Other_neurotic_disorders,98
+F40-F48,"Neurotic, stress-related and somatoform disorders",Neurotic,F40,Phobic anxiety disorders,Phobic anxiety disorders,o.Neurotic.Phobic_anxiety_disorders,100
+F40-F48,"Neurotic, stress-related and somatoform disorders",Neurotic,F43,"Reaction to severe stress, and adjustment disorders",Reaction to severe stress,o.Neurotic.Reaction_to_severe_stress,102
+F40-F48,"Neurotic, stress-related and somatoform disorders",Neurotic,F45,Somatoform disorders,Somatoform disorders,o.Neurotic.Somatoform_disorders,104
+F50-F59,-,-,-,-,-,o.Behavioural,106
+F50-F59,Behavioural syndromes associated with physiological disturbances and physical factors,Behavioural,F50,Eating disorders,Eating disorders,o.Behavioural.Eating_disorders,108
+F50-F59,Behavioural syndromes associated with physiological disturbances and physical factors,Behavioural,F55,Abuse of non-dependence-producing substances,Non-dependence-producing substances,o.Behavioural.Non-dependence-producing_substances,110
+F50-F59,Behavioural syndromes associated with physiological disturbances and physical factors,Behavioural,F51,Nonorganic sleep disorders,Nonorganic sleep disorders,o.Behavioural.Nonorganic_sleep_disorders,112
+F50-F59,Behavioural syndromes associated with physiological disturbances and physical factors,Behavioural,F54,Psychological and behavioural factors associated with disorders or diseases classified elsewhere,Other,o.Behavioural.Other,114
+F50-F59,Behavioural syndromes associated with physiological disturbances and physical factors,Behavioural,F53,"Mental and behavioural disorders associated with the puerperium, not elsewhere classified",Puerperium,o.Behavioural.Puerperium,116
+F50-F59,Behavioural syndromes associated with physiological disturbances and physical factors,Behavioural,F52,"Sexual dysfunction, not caused by organic disorder or disease",Sexual dysfunction,o.Behavioural.Sexual_dysfunction,118
+F50-F59,Behavioural syndromes associated with physiological disturbances and physical factors,Behavioural,F59,Unspecified behavioural syndromes associated with physiological disturbances and physical factors,Unspecified,o.Behavioural.Unspecified,120
+F60-F69,-,-,-,-,-,o.Personality,122
+F60-F69,Disorders of adult personality and behaviour,Personality,F65,Disorders of sexual preference,Disorders of sexual preference,o.Personality.Disorders_of_sexual_preference,124
+F60-F69,Disorders of adult personality and behaviour,Personality,F64,Gender identity disorders,Gender identity disorders,o.Personality.Gender_identity_disorders,126
+F60-F69,Disorders of adult personality and behaviour,Personality,F63,Habit and impulse disorders,Habit and impulse disorders,o.Personality.Habit_and_impulse_disorders,128
+F60-F69,Disorders of adult personality and behaviour,Personality,F61,Mixed and other personality disorders,Mixed and other personality disorders,o.Personality.Mixed_and_other_personality_disorders,130
+F60-F69,Disorders of adult personality and behaviour,Personality,F68,Other disorders of adult personality and behaviour,Other,o.Personality.Other,132
+F60-F69,Disorders of adult personality and behaviour,Personality,F62,"Enduring personality changes, not attributable to brain damage and disease",Personality changes,o.Personality.Personality_changes,134
+F60-F69,Disorders of adult personality and behaviour,Personality,F66,Psychological and behavioural disorders associated with sexual development and orientation,Sexual development and orientation,o.Personality.Sexual_development_and_orientation,136
+F60-F69,Disorders of adult personality and behaviour,Personality,F60,Specific personality disorders,Specific personality disorders,o.Personality.Specific_personality_disorders,138
+F60-F69,Disorders of adult personality and behaviour,Personality,F69,Unspecified disorder of adult personality and behaviour,Unspecified,o.Personality.Unspecified,140
+F70-F79,-,-,-,-,-,o.Retardation,142
+F70-F79,Mental retardation,Retardation,F70,Mild mental retardation,Mild mental retardation,o.Retardation.Mild_mental_retardation,144
+F70-F79,Mental retardation,Retardation,F71,Moderate mental retardation,Moderate mental retardation,o.Retardation.Moderate_mental_retardation,146
+F70-F79,Mental retardation,Retardation,F78,Other mental retardation,Other mental retardation,o.Retardation.Other_mental_retardation,148
+F70-F79,Mental retardation,Retardation,F73,Profound mental retardation,Profound mental retardation,o.Retardation.Profound_mental_retardation,150
+F70-F79,Mental retardation,Retardation,F72,Severe mental retardation,Severe mental retardation,o.Retardation.Severe_mental_retardation,152
+F70-F79,Mental retardation,Retardation,F79,Unspecified mental retardation,Unspecified mental retardation,o.Retardation.Unspecified_mental_retardation,154
+F80-F89,-,-,-,-,-,o.Psycho,156
+F80-F89,Disorders of psychological development,Psycho,F83,Mixed specific developmental disorders,Mixed specific developmental disorders,o.Psycho.Mixed_specific_developmental_disorders,158
+F80-F89,Disorders of psychological development,Psycho,F82,Specific developmental disorder of motor function,Motor function,o.Psycho.Motor_function,160
+F80-F89,Disorders of psychological development,Psycho,F88,Other disorders of psychological development,Other,o.Psycho.Other,162
+F80-F89,Disorders of psychological development,Psycho,F84,Pervasive developmental disorders,Pervasive developmental disorders,o.Psycho.Pervasive_developmental_disorders,164
+F80-F89,Disorders of psychological development,Psycho,F81,Specific developmental disorders of scholastic skills,Scholastic skills,o.Psycho.Scholastic_skills,166
+F80-F89,Disorders of psychological development,Psycho,F80,Specific developmental disorders of speech and language,Speech and language,o.Psycho.Speech_and_language,168
+F80-F89,Disorders of psychological development,Psycho,F89,Unspecified disorder of psychological development,Unspecified,o.Psycho.Unspecified,170
+F90-F98,-,-,-,-,-,o.Emotional,172
+F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F91,Conduct disorders,Conduct disorders,o.Emotional.Conduct_disorders,174
+F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F93,Emotional disorders with onset specific to childhood,Emotional disorders,o.Emotional.Emotional_disorders,176
+F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F90,Hyperkinetic disorders,Hyperkinetic disorders,o.Emotional.Hyperkinetic_disorders,178
+F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F92,Mixed disorders of conduct and emotions,Mixed disorders of conduct and emotions,o.Emotional.Mixed_disorders_of_conduct_and_emotions,180
+F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F98,Other behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Other,o.Emotional.Other,182
+F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F94,Disorders of social functioning with onset specific to childhood and adolescence,Social functioning,o.Emotional.Social_functioning,184
+F90-F98,Behavioural and emotional disorders with onset usually occurring in childhood and adolescence,Emotional,F95,Tic disorders,Tic disorders,o.Emotional.Tic_disorders,186
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
