@@ -107,7 +107,7 @@ var svg = d3.select("#dataviz1"),
     g = svg.append("g").attr("transform", "translate(" + (width / 2 - 15) + "," + (height / 2 + 25) + ")");
 
 var stratify = d3.stratify()
-    .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
+    .parentId(function(d) {console.log("out:"); console.log(d.id.substring(0, d.id.lastIndexOf("."))) ; return d.id.substring(0, d.id.lastIndexOf(".")); });
 
 var tree = d3.cluster()
     .size([360, 390])
@@ -122,8 +122,7 @@ d3.select("#dataviz1")
 
 d3.csv("https://raw.githubusercontent.com/holtzy/Mental-Disorder-Review/master/DATA/ICD.csv", function(data) {
 
-  var root = tree(stratify(data)
-      .sort(function(a, b) { return (a.height - b.height) || a.id.localeCompare(b.id); }));
+  var root = tree(stratify(data))
 
  console.log(root)
 
