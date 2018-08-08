@@ -86,10 +86,10 @@
   <div class="container">
 
     <div class="row">
-      <div class="col-md-7" id="dataviz1">
-        <svg width="560" height="550"></svg>
+      <div class="col-md-8" id="dataviz1">
+        <svg width="700" height="750"></svg>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-4" style='padding-top: 80px'>
         <h3 style="line-height: 50px"><u>Part 1</u>:<br>How mental disorders are organized.</h3>
         <hr>
         <p>What is the ICD classification? How many groups? How many different disorders? How are they defined?</p>
@@ -146,15 +146,16 @@ var tree = d3.cluster()
     .size([360, 200])
     .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
 
-d3.csv("https://raw.githubusercontent.com/holtzy/Mental-Disorder-Review/master/DATA/ICD.csv", function(data) {
-//d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/miniflare.csv", function(data) {
+//d3.csv("https://raw.githubusercontent.com/holtzy/Mental-Disorder-Review/master/DATA/ICD.csv", function(data) {
+d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/miniflare.csv", function(data) {
 
   var root = tree(stratify(data)
       .sort(function(a, b) { return (a.height - b.height) || a.id.localeCompare(b.id); }));
 
   var link = g.selectAll(".link")
     .data(root.descendants().slice(1))
-    .enter().append("path")
+    .enter()
+    .append("path")
       .attr("class", "link")
       .attr("d", function(d) {
         return "M" + project(d.x, d.y)
@@ -200,11 +201,11 @@ function project(x, y) {
 
 <!-- =======================  PART 2 ======================= -->
 
-<section id="part2" class="bg-light">
+<section id="part2" class="bg-light" style="padding-top: 0px; padding-bottom: 0px">
   <div class="container">
 
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-md-5" style="padding-top: 200px">
         <h3 style="line-height: 50px"><u>Part 2</u>:<br>Occurence and impact.</h3>
         <hr>
         <p>What are the most common mental disorders? What is the occurence of each? What is their impact?</p>
@@ -213,11 +214,94 @@ function project(x, y) {
         <hr>
         <p><u>Data</u>: data from the <a href="http://www.healthdata.org/gbd">Global Burden of Disease</a></p>
       </div>
-      <div class="col-md-7" id="dataviz1"> yo</div>
+      <div class="col-md-7" id="dataviz2"></div>
   </div>
 </section>
 
-<br>
+
+<script src="LIB/d3-scale-radial.js"></script>
+<script>
+// set the dimensions and margins of the graph
+var margin = {top: 100, right: 0, bottom: 0, left: 0},
+    width = 800 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom,
+    innerRadius = 160,
+    outerRadius = Math.min(width, height) / 2;   // the outerRadius goes from the middle of the SVG area to the border
+
+// append the svg object
+var svg = d3.select("#dataviz2")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + (width / 2 + margin.left) + "," + (height / 2 + margin.top) + ")"); 
+
+// Scales
+var x = d3.scaleBand()
+    .range([0, 2 * Math.PI])    // X axis goes from 0 to 2pi = all around the circle. If I stop at 1Pi, it will be around a half circle
+    .align(0);                  // This does nothing
+var y = d3.scaleRadial()
+    .range([innerRadius, outerRadius]);   // Domain will be define later.
+
+// Second barplot Scales
+var ybis = d3.scaleRadial()
+    .range([155, 5]);   // Domain will be defined later.
+
+
+d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum.csv", function(data) {
+
+  x.domain(data.map(function(d) { return d.Country; })); // The domain of the X axis is the list of states.
+  y.domain([0, 13000]); // Domain of Y is from 0 to the max seen in the data
+  ybis.domain([0, 13000]);
+
+  // Add the bars
+  svg.append("g")
+    .selectAll("path")
+    .data(data)
+    .enter()
+    .append("path")
+      .attr("fill", "#69b3a2")
+      .attr("class", "yo")
+      .attr("d", d3.arc()     // imagine your doing a part of a donut plot
+          .innerRadius(innerRadius)
+          .outerRadius(function(d) { return y(d['Value']); })
+          .startAngle(function(d) { return x(d.Country); })
+          .endAngle(function(d) { return x(d.Country) + x.bandwidth(); })
+          .padAngle(0.01)
+          .padRadius(innerRadius))
+
+  // Add the labels
+  svg.append("g")
+      .selectAll("g")
+      .data(data)
+      .enter()
+      .append("g")
+        .attr("text-anchor", function(d) { return (x(d.Country) + x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "end" : "start"; })
+        .attr("transform", function(d) { return "rotate(" + ((x(d.Country) + x.bandwidth() / 2) * 180 / Math.PI - 90) + ")"+"translate(" + (y(d['Value'])+10) + ",0)"; })
+      .append("text")
+        .text(function(d){return(d.Country)})
+        .attr("transform", function(d) { return (x(d.Country) + x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
+        .style("font-size", "11px")
+        .attr("alignment-baseline", "middle")
+
+  // Add the second serie
+  svg.append("g")
+    .selectAll("path")
+    .data(data)
+    .enter()
+    .append("path")
+      .attr("fill", "red")
+      .attr("d", d3.arc()     // imagine your doing a part of a donut plot
+          .innerRadius( function(d) { return ybis(0) })
+          .outerRadius( function(d) { return ybis(d['Value']); })
+          .startAngle(function(d) { console.log("ok") ; return x(d.Country); })
+          .endAngle(function(d) { return x(d.Country) + x.bandwidth(); })
+          .padAngle(0.01)
+          .padRadius(innerRadius))
+
+});
+
+</script>
 
 
 
@@ -226,7 +310,49 @@ function project(x, y) {
 
 
 
+<!-- =======================  PART 3 ======================= -->
 
+<section id="part2" class="bg" style="padding-top: 50px; padding-bottom: 250px">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-7" id="dataviz2">-</div>
+      <div class="col-md-5" style="padding-top: 200px">
+        <h3 style="line-height: 50px"><u>Part 3</u>:<br>Comorbidity.</h3>
+        <hr>
+        <p>What is comorbidity? What are the most linked disorders?</p>
+        <hr>
+        <p>Chord diagram IN the circular barplot.</p>
+        <hr>
+        <p><u>Data</u>: data from the Oleguer's publication</p>
+      </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- =======================  PART 3 ======================= -->
+
+<section id="part2" class="bg-light" style="padding-top: 50px; padding-bottom: 250px">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-5" style="padding-top: 200px">
+        <h3 style="line-height: 50px"><u>Part 4</u>:<br>Heritability.</h3>
+        <hr>
+        <p>What is genetic? How much does it explain mental disorders?</p>
+        <hr>
+        <p>One more layer on the barplot</p>
+        <hr>
+        <p><u>Data</u>: Ben Neales Lab from LD score regression?</p>
+      </div>
+      <div class="col-md-7" id="dataviz2">-</div>
+  </div>
+</section>
 
 
 
